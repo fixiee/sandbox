@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{87BC90F3-0029-4ED4-8D10-C41918E90BB3}") = "BuchungenErstellen", "BuchungenErstellen.csproj", "{87BC90F3-0029-4ED4-8D10-C41918E90BB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87BC90F3-0029-4ED4-8D10-C41918E90BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BC90F3-0029-4ED4-8D10-C41918E90BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BC90F3-0029-4ED4-8D10-C41918E90BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BC90F3-0029-4ED4-8D10-C41918E90BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
