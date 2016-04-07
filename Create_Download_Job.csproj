@@ -1,0 +1,2118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutputType>Library</OutputType>
+    <ProjectGuid>{94FD781C-54BB-4D95-B248-081167FE6E80}</ProjectGuid>
+    <RootNamespace>Create_Download_Job</RootNamespace>
+    <AssemblyName>Create_Download_Job</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+</PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+</PropertyGroup>
+  <ItemGroup>
+    
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Interflex.IF6040.ActiveXDataContainer">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ActiveXDataContainer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.API.Base">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.API.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.API">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.API.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.API.Extensions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.API.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.API.Remote">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.API.Remote.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Dispatcher.DispatcherLib.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Dispatcher.DispatcherLib.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.ApplicationFramework.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.ApplicationFramework.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.ApplicationFramework.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.ApplicationFramework.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.ChecksumCalculation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.ChecksumCalculation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.AssemblyAttributes">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.AssemblyAttributes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Authentication.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Authentication.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Authentication.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Authentication.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Authentication.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Authentication.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Base">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Base.PropertyOperands">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Base.PropertyOperands.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.BaseData.Constants">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.BaseData.Constants.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.BaseData">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.BaseData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Collections">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.CompanyOrganization.Constants">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.CompanyOrganization.Constants.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.CompanyOrganization">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.CompanyOrganization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.DbGlobalization">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.DbGlobalization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.DBManImplementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.DBManImplementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.DbUpdateMethods">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.DbUpdateMethods.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.ErrorManagement.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.ErrorManagement.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.ErrorManagement.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.ErrorManagement.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Globalization.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Globalization.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Globalization.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Globalization.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Globalization.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Globalization.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Hierarchy.Constants">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Hierarchy.Constants.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Hierarchy">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Hierarchy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.IfTerapi">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.IfTerapi.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.LdapConnector">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.LdapConnector.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Licensing">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Licensing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Localization">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Localization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.MemberAttributes">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.MemberAttributes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.MessageQueuing.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.MessageQueuing.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.MessageQueuing.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.MessageQueuing.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Monitoring.Configuration.DataMigration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Monitoring.Configuration.DataMigration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Monitoring.Configuration.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Monitoring.Configuration.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.NocFacilityHandling.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.NocFacilityHandling.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.NocFacilityHandling.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.NocFacilityHandling.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.NocXmlHandling">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.NocXmlHandling.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Ranges">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Ranges.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Remoting">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Remoting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Security">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Security.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Security.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Security.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Types">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.Validation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.Validation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Libraries.WindowsEventLogging">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Libraries.WindowsEventLogging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Auditing.Constants">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Auditing.Constants.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Auditing.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Auditing.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Auditing.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Auditing.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.BackgroundJobs">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.BackgroundJobs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.DataEngine.Configuration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.DataEngine.Configuration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.DataEngine">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.DataEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.DataEngine.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.DataEngine.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.ErrorHandling">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.ErrorHandling.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.ErrorHandling.Exceptions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.ErrorHandling.Exceptions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Factory">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Factory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.MethodRegistry">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.MethodRegistry.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Oracle11gProvider">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Oracle11gProvider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Oracle12cProvider">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Oracle12cProvider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.OracleProvider">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.OracleProvider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.PerfCount.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.PerfCount.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.PerfCount.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.PerfCount.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Periphery.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Periphery.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.ProcessManagement">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.ProcessManagement.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Runtime.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Runtime.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Runtime.Server">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Runtime.Server.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Security.AccessControl">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Security.AccessControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Security.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Security.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Security.Client.Providers">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Security.Client.Providers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Security.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Security.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Security.Server">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Security.Server.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Security.Server.Providers">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Security.Server.Providers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.SessionManagement">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.SessionManagement.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.SqlServer2008Provider">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.SqlServer2008Provider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.SqlServer2012Provider">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.SqlServer2012Provider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.SqlServer2014Provider">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.SqlServer2014Provider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.SqlServerProvider">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.SqlServerProvider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Synchronization.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Synchronization.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Synchronization.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Synchronization.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Workflow.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Workflow.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Workflow.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Workflow.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.Workflow.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.Workflow.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.WorkflowProxy.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.WorkflowProxy.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.WorkflowProxy.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.WorkflowProxy.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Services.WorkflowRuntime">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Services.WorkflowRuntime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Tools.Crypter.SymmetricCrypter">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Tools.Crypter.SymmetricCrypter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Tools.ScalingTools.BookingserverConfigurator.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Tools.ScalingTools.BookingserverConfigurator.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Foundation.Tools.XmlMerge">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Foundation.Tools.XmlMerge.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Infrastructure6025">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Infrastructure6025.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.AccessRights.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.AccessRights.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.AccessRights.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.AccessRights.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.AccessRights.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.AccessRights.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.BookingProcessing.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.BookingProcessing.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.BookingProcessing.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.BookingProcessing.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.BookingProcessing.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.BookingProcessing.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.CustomerExtensions.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.CustomerExtensions.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.CustomerExtensions.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.CustomerExtensions.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.CustomerExtensions.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.CustomerExtensions.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DataExchange.DatabaseMaintenance">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DataExchange.DatabaseMaintenance.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DataExchange.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DataExchange.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DataExchange.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DataExchange.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DataExchange.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DataExchange.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DataExchange.KemasDepotTransfer">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DataExchange.KemasDepotTransfer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DataExchange.KemasDepotTransfer.Simulation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DataExchange.KemasDepotTransfer.Simulation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DataExchange.TbsTransfer">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DataExchange.TbsTransfer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DayTypes.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DayTypes.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.DayTypes.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.DayTypes.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Globalization.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Globalization.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.HumanResources.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.HumanResources.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.HumanResources.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.HumanResources.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.HumanResources.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.HumanResources.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.IfTerapiClient.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.IfTerapiClient.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.IfTerapiClient.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.IfTerapiClient.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Licensing">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Licensing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Licensing.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Licensing.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.AlarmArchive.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.AlarmArchive.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.AlarmArchive.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.AlarmArchive.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.AlarmArchive.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.AlarmArchive.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.Configuration.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.Configuration.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.Configuration.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.Configuration.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.Configuration.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.Configuration.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.EventSource.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.EventSource.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.EventSource.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.EventSource.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Monitoring.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Monitoring.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Administration.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Administration.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Administration.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Administration.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Administration.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Administration.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.ConverterNT.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.ConverterNT.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.ConverterNT.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.ConverterNT.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.ConverterNT.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.ConverterNT.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Parameter.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Parameter.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Parameter.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Parameter.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Parameter.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Parameter.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Persistence.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Persistence.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Persistence.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Persistence.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Preparation.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Preparation.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Service.Generator">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Service.Generator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Service.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Service.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Download.Service.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Download.Service.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libaries.AreaCode.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libaries.AreaCode.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libaries.AreaCode.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libaries.AreaCode.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libaries.AreaCode.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libaries.AreaCode.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libaries.PeripherieLibrary.BaseData">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libaries.PeripherieLibrary.BaseData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libaries.PeripherieLibrary.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libaries.PeripherieLibrary.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libaries.UnitDataHelper.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libaries.UnitDataHelper.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libraries.PeripherieLibrary.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libraries.PeripherieLibrary.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libraries.PeripherieLibrary.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libraries.PeripherieLibrary.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libraries.PSConfiguration.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libraries.PSConfiguration.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libraries.PSConfiguration.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libraries.PSConfiguration.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.Libraries.PSConfiguration.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.Libraries.PSConfiguration.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.NetworkOnMobile.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.NetworkOnMobile.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.NetworkOnMobile.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.NetworkOnMobile.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.NetworkOnMobile.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.NetworkOnMobile.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.NoC.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.NoC.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Peripherie.NoC.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Peripherie.NoC.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.PeripheryAdapter.DatabaseMaintenance">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.PeripheryAdapter.DatabaseMaintenance.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.PeripheryAdapter.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.PeripheryAdapter.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.PeripheryAdapter.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.PeripheryAdapter.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.PeripheryAdapter.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.PeripheryAdapter.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.PlanEntryAudit.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.PlanEntryAudit.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.PlanEntryAudit.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.PlanEntryAudit.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.PlanEntryAudit.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.PlanEntryAudit.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.QualityManagement.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.QualityManagement.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.QualityManagement.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.QualityManagement.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.QualityManagement.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.QualityManagement.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Recording.PersonEvents.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Recording.PersonEvents.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Recording.PersonEvents.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Recording.PersonEvents.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Recording.PersonEvents.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Recording.PersonEvents.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Reporting.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Reporting.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Reporting.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Reporting.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Scheduling.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Scheduling.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Scheduling.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Scheduling.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Scheduling.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Scheduling.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Scripting.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Scripting.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Scripting.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Scripting.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Scripting.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Scripting.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Security.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Security.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Security.Helpers">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Security.Helpers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Security.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Security.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Security.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Security.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Ta.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Ta.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Ta.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Ta.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Ta.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Ta.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Taskflow.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Taskflow.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Taskflow.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Taskflow.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Taskflow.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Taskflow.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.UIConfiguration.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.UIConfiguration.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.UIConfiguration.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.UIConfiguration.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.UIConfiguration.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.UIConfiguration.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Vehicles.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Vehicles.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Vehicles.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Vehicles.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Vehicles.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Vehicles.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Visitor.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Visitor.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Visitor.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Visitor.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Visitor.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Visitor.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Workflow.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Workflow.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Workflow.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Workflow.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.Workflow.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.Workflow.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.WorkflowActivities">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.WorkflowActivities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.WorkflowActivities.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.WorkflowActivities.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.WorkflowActivities.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.WorkflowActivities.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.WorkflowActivities.Services">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.WorkflowActivities.Services.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Modules.WorkflowActivities.Support">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Modules.WorkflowActivities.Support.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Monitoring.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Monitoring.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Monitoring.Globals">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Monitoring.Globals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Monitoring.Server.Service">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Monitoring.Server.Service.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Monitoring.ServiceContract">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Monitoring.ServiceContract.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Processes.ApplicationServer.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Processes.ApplicationServer.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.ASConnection.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.ASConnection.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.ASConnection.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.ASConnection.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Configuration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Configuration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.IfBookingService.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.IfBookingService.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.IfBookingService.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.IfBookingService.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.IfBookingService.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.IfBookingService.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.IfBookingService.RestService">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.IfBookingService.RestService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.NetworkOnMobile.WebService.Implememtation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.NetworkOnMobile.WebService.Implememtation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.NetworkOnMobile.WebService.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.NetworkOnMobile.WebService.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.NetworkOnMobile.WebService.ServiceContract">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.NetworkOnMobile.WebService.ServiceContract.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.PerfCounts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.PerfCounts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Implementation.IFTerapi">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Implementation.IFTerapi.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Implementation.ITHost">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Implementation.ITHost.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Implementation.NocWireless">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Implementation.NocWireless.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Implementation.Pcs">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Implementation.Pcs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Implementation.Rcnx">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Implementation.Rcnx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Implementation.TbsBiometric">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Implementation.TbsBiometric.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.PcsMessages">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.PcsMessages.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Protocol.RcnxMessages">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Protocol.RcnxMessages.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.TbsConnectorService.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.TbsConnectorService.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.TbsConnectorService.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.TbsConnectorService.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.TbsConnectorService.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.TbsConnectorService.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.TbsStatusCheckProxy">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.TbsStatusCheckProxy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.PS.Utilities">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.PS.Utilities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.QualityManagement.Foundation.DatabaseAccess">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.QualityManagement.Foundation.DatabaseAccess.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ReportAdmin.ReportAdminForms">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ReportAdmin.ReportAdminForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Security.Utilities">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Security.Utilities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Auditing.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Auditing.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Auditing.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Auditing.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Servicelayer.Authentication.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Servicelayer.Authentication.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BaseDataServices.Exceptions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BaseDataServices.Exceptions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BaseDataServices.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BaseDataServices.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BaseDataServices.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BaseDataServices.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BaseDataServices.RemoteServices">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BaseDataServices.RemoteServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BaseServices.Exceptions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BaseServices.Exceptions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BaseServices.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BaseServices.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BaseServices.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BaseServices.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BookingProcessing.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BookingProcessing.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.BookingProcessing.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.BookingProcessing.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.CustomerExtensions.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.CustomerExtensions.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.CustomerExtensions.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.CustomerExtensions.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.DataExchange.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.DataExchange.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.DataExchange.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.DataExchange.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.DataObjectTypeHandlers.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.DataObjectTypeHandlers.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.DataObjectTypeHandlers.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.DataObjectTypeHandlers.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.DayTypes.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.DayTypes.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.DayTypes.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.DayTypes.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Download.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Download.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Download.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Download.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Download.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Download.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.Actions.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.Actions.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.Actions.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.Actions.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.AlarmArchive.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.AlarmArchive.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.AlarmArchive.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.AlarmArchive.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.Configuration.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.Configuration.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.Configuration.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.Configuration.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.EventSource.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.EventSource.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.EventSource.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.EventSource.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.Simulation.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.Simulation.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Monitoring.Simulation.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Monitoring.Simulation.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.NetworkOnMobile.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.NetworkOnMobile.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.NetworkOnMobile.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.NetworkOnMobile.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.NetworkOnMobile.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.NetworkOnMobile.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PeripheralsServer.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PeripheralsServer.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PeripheralsServer.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PeripheralsServer.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PeripheralsServer.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PeripheralsServer.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PeripheralsServerRemote.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PeripheralsServerRemote.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PeripheralsServerRemote.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PeripheralsServerRemote.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PeripheryAdapter.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PeripheryAdapter.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PeripheryAdapter.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PeripheryAdapter.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PlanEntryAudit.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PlanEntryAudit.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PublishedServices.Cxn6020Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PublishedServices.Cxn6020Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PublishedServices.Cxn6020Service">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PublishedServices.Cxn6020Service.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PublishedServices">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PublishedServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PublishedServices.SccClientIf6040">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PublishedServices.SccClientIf6040.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.PublishedServices.SharedDataContracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.PublishedServices.SharedDataContracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.QualityManagement.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.QualityManagement.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.QualityManagement.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.QualityManagement.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Recording.PersonEvents.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Recording.PersonEvents.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Recording.PersonEvents.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Recording.PersonEvents.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Scheduling.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Scheduling.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Scheduling.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Scheduling.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Scripting.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Scripting.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Scripting.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Scripting.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.SearchServices.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.SearchServices.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.SearchServices.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.SearchServices.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.SearchServicesRemote.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.SearchServicesRemote.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.SearchServicesRemote.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.SearchServicesRemote.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Security.Actions.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Security.Actions.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Security.Actions.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Security.Actions.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Security.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Security.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Security.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Security.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Security.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Security.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Ta.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Ta.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Ta.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Ta.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Ta.WcfContracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Ta.WcfContracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Taskflow.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Taskflow.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Taskflow.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Taskflow.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Taskflow.WcfContracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Taskflow.WcfContracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.UIConfigurationServices.Global">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.UIConfigurationServices.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.UIConfigurationServices.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.UIConfigurationServices.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.UIConfigurationServices.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.UIConfigurationServices.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.UIConfigurationServicesRemote.Exceptions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.UIConfigurationServicesRemote.Exceptions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.UIConfigurationServicesRemote.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.UIConfigurationServicesRemote.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.UIConfigurationServicesRemote.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.UIConfigurationServicesRemote.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Vehicles.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Vehicles.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Vehicles.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Vehicles.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.VisitorServices.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.VisitorServices.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.VisitorServices.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.VisitorServices.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Workflow.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Workflow.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.ServiceLayer.Workflow.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.ServiceLayer.Workflow.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.DBExtender.Increments">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.DBExtender.Increments.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.DBReportReplacer.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.DBReportReplacer.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.Globalization.Implementation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.Globalization.Implementation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.Globalization.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.Globalization.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.Scripting.CompaniesScripts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.Scripting.CompaniesScripts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.SeetecSgsSimulation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.SeetecSgsSimulation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.TerminalSimulation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.TerminalSimulation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.TerminalSimulation.IntusComDownloadSimulation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.TerminalSimulation.IntusComDownloadSimulation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.WcfConfiguratorLib">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.WcfConfiguratorLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Tools.WorkflowDesignerControl">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Tools.WorkflowDesignerControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.AccessControl.AccessManagement">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.AccessControl.AccessManagement.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.AccessControl">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.AccessControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.AccessControl.OfflineDevices">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.AccessControl.OfflineDevices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Administration.BusinessData">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Administration.BusinessData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Administration.SystemAdministration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Administration.SystemAdministration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.ApplicationComfort">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.ApplicationComfort.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.BackgroundJobs">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.BackgroundJobs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.CustomerExtensions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.CustomerExtensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.DataExchange">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.DataExchange.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Lib.Controls">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Lib.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Lib.DataControls">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Lib.DataControls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Lib.Services">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Lib.Services.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Lib.UserSettings">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Lib.UserSettings.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Lib.XmlUI">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Lib.XmlUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Libraries.AspMock">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Libraries.AspMock.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Mobile.Backend">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Mobile.Backend.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Mobile.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Mobile.Contracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Monitoring">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Monitoring.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Organization">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Organization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.PeripheryAdapter">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.PeripheryAdapter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.QualityManagement">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.QualityManagement.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Recording.PersonEvents">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Recording.PersonEvents.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Scheduling">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Scheduling.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Scripting">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Scripting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Ta">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Ta.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.TAPrototype">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.TAPrototype.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Taskflow">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Taskflow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.UIConfiguration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.UIConfiguration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Visitors">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Visitors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6040.Web.Workflows">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6040.Web.Workflows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.AccessModuleCS">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.AccessModuleCS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.ApplicationCS">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.ApplicationCS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.Basis6025">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.Basis6025.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.BucCheck">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.BucCheck.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.Calendar">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.Calendar.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.Database">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.Database.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.EmployeeAccessRights">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.EmployeeAccessRights.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.EmployeeModule">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.EmployeeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.Parameter">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.Parameter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.Report">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.Report.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.RightDefinitions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.RightDefinitions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.Services">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.Services.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.Tracing">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.Tracing.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.TransferObjects">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.TransferObjects.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.UserProfileDataModel">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.UserProfileDataModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.UserProfileFilterModel">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.UserProfileFilterModel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interflex.IF6025.UserProfileFilterModel.XmlSerializers">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Interflex.IF6025.UserProfileFilterModel.XmlSerializers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\log4net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Modules.Reporting.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Modules.Reporting.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ServiceLayer.ReportingServices.Interface">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ServiceLayer.ReportingServices.Interface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TABaseDataReferences">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TABaseDataReferences.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TACommon">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TACommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TAFaultContracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TAFaultContracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Tamir.SharpSSH">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Tamir.SharpSSH.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TAServiceLayerImplTools">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TAServiceLayerImplTools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ScheduleData">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ScheduleData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ScheduleDataCommon">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ScheduleDataCommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ScheduleService">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ScheduleService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Spx.PublicContracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Spx.PublicContracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Spx.RouterService">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Spx.RouterService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxClientAdaptor">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxClientAdaptor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxClientAdaptorImpl">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxClientAdaptorImpl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxControlService">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxControlService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxCorrectionService">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxCorrectionService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxDataServices">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxDataServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxDataServicesImpl">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxDataServicesImpl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxReportingService">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxReportingService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxServiceBase">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxServiceBase.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SpxServices">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpxServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Itenso.TimePeriod">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Itenso.TimePeriod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Stimulsoft.Base">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Stimulsoft.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Stimulsoft.Report">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Stimulsoft.Report.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TimeRecordingSupplier">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TimeRecordingSupplier.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Create_Download_Job.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
